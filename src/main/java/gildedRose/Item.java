@@ -83,11 +83,7 @@ public class Item {
             case "Sulfuras, Hand of Ragnaros":
                 break;
             default:
-                if(quality > 0) quality = quality - 1;
-                sellIn = sellIn - 1;
-                if (sellIn < 0 && quality > 0) {
-                    quality = quality - 1;
-                }
+                new NormalStrategy().update(this);
 
         }
 
