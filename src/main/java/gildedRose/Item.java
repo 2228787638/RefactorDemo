@@ -57,13 +57,7 @@ public class Item {
 
         switch (this.name){
             case "Aged Brie":
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
-                sellIn = sellIn - 1;
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
+                new AgedBrieStrategy().update(this);
                 break;
             case "Backstage passes to a TAFKAL80ETC concert":
                 if (quality < 50) {
