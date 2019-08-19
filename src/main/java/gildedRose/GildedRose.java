@@ -20,21 +20,13 @@ public class GildedRose {
                     }
                 }
             } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
+                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    updateBackstagePasses(items[i]);
+                    continue;
+                }
+                else{
+                    if (items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
                     }
                 }
             }
@@ -52,7 +44,7 @@ public class GildedRose {
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        continue;
                     }
                 } else {
                     if (items[i].quality < 50) {
@@ -60,6 +52,30 @@ public class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    public void updateBackstagePasses(Item item){
+        if (item.getQuality() < 50) {
+            item.setQuality(item.getQuality() + 1);
+
+            if (item.getSellIn() < 11) {
+                if (item.getQuality() < 50) {
+                    item.setQuality(item.getQuality() + 1);
+                }
+            }
+
+            if (item.getSellIn() < 6) {
+                if (item.getQuality() < 50) {
+                    item.setQuality(item.getQuality() + 1);
+                }
+            }
+        }
+
+        item.setSellIn(item.getSellIn() - 1);
+
+        if (item.getSellIn() < 0) {
+            item.setQuality(0);
         }
     }
 }
