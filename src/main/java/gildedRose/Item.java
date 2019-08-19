@@ -60,19 +60,7 @@ public class Item {
                 new AgedBrieStrategy().update(this);
                 break;
             case "Backstage passes to a TAFKAL80ETC concert":
-                if (quality < 50) {
-                    quality=quality + 1;
-                    if (sellIn < 11 && quality < 50) {
-                        quality = quality + 1;
-                    }
-                    if (sellIn < 6 && quality < 50 ) {
-                        quality = quality + 1;
-                    }
-                }
-                sellIn -= 1;
-                if (sellIn < 0) {
-                    quality = 0;
-                }
+                new BackstagePassesStrategy().update(this);
                 break;
             case "Sulfuras, Hand of Ragnaros":
                 break;
